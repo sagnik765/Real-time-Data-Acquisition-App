@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light"
+    android:backgroundTint="#FF9800"
+    android:foreground="#00DA0303"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="170dp"
+        android:layout_marginEnd="170dp"
+        android:layout_marginBottom="664dp"
+        android:background="#FFFFFF"
+        android:src="@drawable/pp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="375dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <View
+        android:id="@+id/divider5"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="188dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/tGraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="81dp"
+        android:layout_marginEnd="54dp"
+        android:text="GRAPH"
+        app:layout_constraintBottom_toTopOf="@+id/divider5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/aGraph" />
+
+    <Button
+        android:id="@+id/rGraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="1dp"
+        android:text="GRAPH"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/vGraph"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+    <Button
+        android:id="@+id/vGraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="81dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="1dp"
+        android:text="GRAPH"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rGraph"
+        app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+    <Button
+        android:id="@+id/aGraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="81dp"
+        android:text="GRAPH"
+        app:layout_constraintBottom_toTopOf="@+id/divider5"
+        app:layout_constraintEnd_toStartOf="@+id/tGraph"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/Acceleration"
+        android:layout_width="174dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="292dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/colorPrimary"        android:autofillHints="@string/app_name"
+        android:ems="10"
+        android:textColor="#FFFFFF"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/aGraph"
+        app:layout_constraintEnd_toStartOf="@+id/Temperature"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/Temperature"
+        android:layout_width="185dp"
+        android:layout_height="132dp"
+        android:layout_marginStart="30dp"
+        android:background="@color/colorPrimary"
+        android:ems="10"
+        android:textColor="#FFFFFF"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/tGraph"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Acceleration"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <EditText
+        android:id="@+id/Range"
+        android:layout_width="169dp"
+        android:layout_height="141dp"
+        android:layout_marginEnd="30dp"
+        android:background="@color/colorPrimary"
+        android:ems="10"
+        android:textColor="#FFFFFF"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/rGraph"
+        app:layout_constraintEnd_toStartOf="@+id/BatteryVoltage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+    <EditText
+        android:id="@+id/BatteryVoltage"
+        android:layout_width="183dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="30dp"
+        android:background="@color/colorPrimary"
+        android:ems="10"
+        android:textColor="#FFFFFF"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toTopOf="@+id/vGraph"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Range"
+        app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/sGraph"
+        android:layout_width="413dp"
+        android:layout_height="286dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/Acceleration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

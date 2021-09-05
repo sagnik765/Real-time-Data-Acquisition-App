@@ -31,12 +31,12 @@ void loop() {
   //String SpeedFire = String(n)+String("Kmph");
   Firebase.pushInt("Data",n);
   Firebase.setInt ("DataNum",n);
-//  //String SoCFire = String(n)+String("%");
-//  Firebase.setInt ("AccumulatorSoC",n);
-//  //String AccFire = String(n)+String("m/s^2");
-//  Firebase.setInt ("Acceleration",n);
-//  //String RangeFire = String(n)+String("Kmph");
-//  Firebase.setInt ("Range",n);
+  //String SoCFire = String(n)+String("%");
+  Firebase.setInt ("AccumulatorSoC",n);
+  //String AccFire = String(n)+String("m/s^2");
+  Firebase.setInt ("Acceleration",n);
+  //String RangeFire = String(n)+String("Kmph");
+  Firebase.setInt ("Range",n);
   
   Serial.print(n);
   // handle error
@@ -45,58 +45,58 @@ void loop() {
       Serial.println(Firebase.error());  
       return;
   }
-  delay(1000);
-  n += 1;
-
   
-//  // update value
-//  Firebase.setFloat("number", 43.0);
-//  // handle error
-//  if (Firebase.failed()) {
-//      Serial.print("setting /number failed:");
-//      Serial.println(Firebase.error());  
-//      return;
-//  }
-//  delay(1000);
-//
-//  // get value 
-//  Serial.print("number: ");
-//  Serial.println(Firebase.getFloat("number"));
-//  delay(1000);
-//
-//  // remove value
-//  Firebase.remove("number");
-//  delay(1000);
-//
-//  // set string value
-//  Firebase.setString("message", "hello world");
-//  // handle error
-//  if (Firebase.failed()) {
-//      Serial.print("setting /message failed:");
-//      Serial.println(Firebase.error());  
-//      return;
-//  }
-//  delay(1000);
-//  
-//  // set bool value
-//  Firebase.setBool("truth", false);
-//  // handle error
-//  if (Firebase.failed()) {
-//      Serial.print("setting /truth failed:");
-//      Serial.println(Firebase.error());  
-//      return;
-//  }
-//  delay(1000);
-//
-//  // append a new value to /logs
-//  String name = Firebase.pushInt("logs", n++);
-//  // handle error
-//  if (Firebase.failed()) {
-//      Serial.print("pushing /logs failed:");
-//      Serial.println(Firebase.error());  
-//      return;
-//  }
-//  Serial.print("pushed: /logs/");
-//  Serial.println(name);
-//  delay(1000);
+delay(1000);
+n += 1;
+  
+// update value
+Firebase.setFloat("number", 43.0);
+// handle error
+if (Firebase.failed()) {
+Serial.print("setting /number failed:");
+Serial.println(Firebase.error());  
+return;
+}
+delay(1000);
+
+// get value 
+Serial.print("number: ");
+Serial.println(Firebase.getFloat("number"));
+delay(1000);
+
+// remove value
+Firebase.remove("number");
+delay(1000);
+
+// set string value
+Firebase.setString("message", "hello world");
+// handle error
+if (Firebase.failed()) {
+Serial.print("setting /message failed:");
+Serial.println(Firebase.error());  
+return;
+}
+delay(1000);
+
+// set bool value
+Firebase.setBool("truth", false);
+// handle error
+if (Firebase.failed()) {
+Serial.print("setting /truth failed:");
+Serial.println(Firebase.error());  
+return;
+}
+delay(1000);
+
+// append a new value to /logs
+String name = Firebase.pushInt("logs", n++);
+// handle error
+if (Firebase.failed()) {
+Serial.print("pushing /logs failed:");
+Serial.println(Firebase.error());  
+return;
+}
+Serial.print("pushed: /logs/");
+Serial.println(name);
+delay(1000);
 }

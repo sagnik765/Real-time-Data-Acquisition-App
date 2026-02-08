@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+        with:
+          additional-urls: https://arduino.esp8266.com/stable/package_esp8266com_index.json
+
+      - name: Install cores and libraries
+        run: |
+          arduino-cli core update-index
+          arduino-cli core install esp8266:esp8266
+          arduino-cli lib install "ArduinoJson"
+          arduino-cli lib install --git-url https://github.com/FirebaseExtended/firebase-arduino
+
+      - name: Lint
+        uses: arduino/arduino-lint-action@v1
+        with:
+          path: .
+
+      - name: Compile
+        run: arduino-cli compile --fqbn esp8266:esp8266:nodemcuv2 .

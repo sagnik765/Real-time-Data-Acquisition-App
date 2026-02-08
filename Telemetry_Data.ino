@@ -1,11 +1,20 @@
 #include <ESP8266WiFi.h>
 #include <FirebaseArduino.h>
+#include "config.h"
 
-// Set these to run example.
-#define FIREBASE_HOST "team-1p618-99e8f.firebaseio.com"
-#define FIREBASE_AUTH "CJ91ukrz3jHsU3G8inovxL4JTUl846h0bsp07Nhl"
-#define WIFI_SSID "Try_ur_luck"
-#define WIFI_PASSWORD "04072000"
+// Configure credentials in config.h (copy from config.example.h).
+#ifndef FIREBASE_HOST
+#error "FIREBASE_HOST is not defined. Update config.h."
+#endif
+#ifndef FIREBASE_AUTH
+#error "FIREBASE_AUTH is not defined. Update config.h."
+#endif
+#ifndef WIFI_SSID
+#error "WIFI_SSID is not defined. Update config.h."
+#endif
+#ifndef WIFI_PASSWORD
+#error "WIFI_PASSWORD is not defined. Update config.h."
+#endif
 
 void setup() {
   Serial.begin(9600);

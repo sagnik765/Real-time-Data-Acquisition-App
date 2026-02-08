@@ -23,6 +23,9 @@ jobs:
           arduino-cli lib install "ArduinoJson"
           arduino-cli lib install --git-url https://github.com/FirebaseExtended/firebase-arduino
 
+      - name: Prepare config
+        run: cp config.example.h config.h
+
       - name: Lint
         uses: arduino/arduino-lint-action@v1
         with:

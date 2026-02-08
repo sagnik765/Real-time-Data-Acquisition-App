@@ -1,11 +1,29 @@
-# Data-Acquisition-App
+# Real-time Data Acquisition App
 
-Please select the Branches option to view the App Project Code.
+An IoT telemetry data acquisition system that streams sensor values to Firebase in real time, designed to work with an Android client and embedded hardware.
 
-This is a Data Acquisition App made using Android Studios. This app is supposed to run by a Telemetry System, a Real time Database and Embedded System (Raspberry Pi), alongwith Sensors.
+## Overview
+- Embedded sketch (`Telemetry_Data.ino`) uses ESP8266 WiFi and Firebase
+- Android client app lives on the `master` branch
+- Designed for real-time data capture and dashboarding
 
-App Project Code:
+## Hardware
+- ESP8266 (NodeMCU or compatible)
+- Sensors as required by your telemetry setup
+- WiFi connectivity
 
-https://github.com/sagnik765/Real-time-Data-Acquisition-App/tree/master
+## Setup
+1. Copy the example config:
+   ```bash
+   cp config.example.h config.h
+   ```
+2. Update `config.h` with your Firebase host/auth token and WiFi credentials.
+3. Open `Telemetry_Data.ino` in the Arduino IDE and select your ESP8266 board.
 
+## Build & Upload
+- Board: `esp8266:esp8266:nodemcuv2` (or your compatible board)
+- Upload from Arduino IDE
 
+## Notes
+- `config.h` is excluded from git to avoid leaking credentials.
+- FirebaseArduino library is required. See CI workflow for installation hints.

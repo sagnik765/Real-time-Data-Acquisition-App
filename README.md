@@ -1,29 +1,68 @@
-# Real-time Data Acquisition App
+# Real-time IoT Telemetry Acquisition
 
-An IoT telemetry data acquisition system that streams sensor values to Firebase in real time, designed to work with an Android client and embedded hardware.
+**ESP8266 telemetry prototype that publishes vehicle-style sensor values to Firebase for real-time client consumption.**
 
-## Overview
-- Embedded sketch (`Telemetry_Data.ino`) uses ESP8266 WiFi and Firebase
-- Android client app lives on the `master` branch
-- Designed for real-time data capture and dashboarding
+![Prototype application](pp.jpg)
 
-## Hardware
-- ESP8266 (NodeMCU or compatible)
-- Sensors as required by your telemetry setup
-- WiFi connectivity
+## Problem Statement
+
+Embedded telemetry systems need a reliable path from constrained devices to a cloud data store while keeping network credentials and backend configuration out of firmware source control.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    SENSOR[Telemetry Signals] --> ESP[ESP8266 Firmware]
+    ESP --> WIFI[Wi-Fi Connection]
+    WIFI --> FB[(Firebase Realtime Database)]
+    FB --> CLIENT[Android or Dashboard Client]
+    ESP --> SERIAL[Serial Diagnostics]
+```
+
+## Telemetry Contract
+
+The sketch demonstrates one-second updates for:
+
+- speed-like telemetry;
+- accumulator state of charge;
+- acceleration;
+- estimated range; and
+- append-only diagnostic logs.
+
+The current values are generated counters and must be replaced with calibrated sensor reads for a physical deployment.
+
+## Tech Stack
+
+- C++ / Arduino
+- ESP8266 Wi-Fi
+- Firebase Realtime Database
+- Arduino CLI validation in GitHub Actions
 
 ## Setup
-1. Copy the example config:
-   ```bash
-   cp config.example.h config.h
-   ```
-2. Update `config.h` with your Firebase host/auth token and WiFi credentials.
-3. Open `Telemetry_Data.ino` in the Arduino IDE and select your ESP8266 board.
 
-## Build & Upload
-- Board: `esp8266:esp8266:nodemcuv2` (or your compatible board)
-- Upload from Arduino IDE
+```bash
+cp config.example.h config.h
+```
 
-## Notes
-- `config.h` is excluded from git to avoid leaking credentials.
-- FirebaseArduino library is required. See CI workflow for installation hints.
+Populate local development values in `config.h`, select an ESP8266-compatible board in Arduino IDE, and upload `Telemetry_Data.ino`.
+
+`config.h` is excluded from Git. Do not commit Wi-Fi passwords, Firebase tokens, or mobile configuration files.
+
+## Security
+
+- Use Firebase Authentication and least-privilege database rules instead of long-lived database secrets in production firmware.
+- Rotate any credential ever committed to repository history.
+- Restrict write paths by device identity.
+- Add TLS certificate and firmware-update planning for deployed hardware.
+
+## Testing
+
+The GitHub Actions workflow performs a firmware compile check. Hardware-in-the-loop tests, reconnect behavior, queueing, and packet-loss measurement are not yet included.
+
+## Future Improvements
+
+- Replace counters with sensor drivers and calibration
+- Add offline buffering and retry with backoff
+- Use device identity rather than a shared token
+- Define timestamped, versioned telemetry records
+- Add dashboard latency and packet-loss observability

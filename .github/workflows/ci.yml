@@ -9,17 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Arduino CLI
-        uses: arduino/setup-arduino-cli@v1
-        with:
-          additional-urls: https://arduino.esp8266.com/stable/package_esp8266com_index.json
+        uses: arduino/setup-arduino-cli@v2
 
       - name: Install cores and libraries
         run: |
-          arduino-cli core update-index
-          arduino-cli core install esp8266:esp8266
+          arduino-cli core update-index --additional-urls https://arduino.esp8266.com/stable/package_esp8266com_index.json
+          arduino-cli core install esp8266:esp8266 --additional-urls https://arduino.esp8266.com/stable/package_esp8266com_index.json
           arduino-cli lib install "ArduinoJson"
           arduino-cli lib install --git-url https://github.com/FirebaseExtended/firebase-arduino
 
@@ -27,7 +25,7 @@ jobs:
         run: cp config.example.h config.h
 
       - name: Lint
-        uses: arduino/arduino-lint-action@v1
+        uses: arduino/arduino-lint-action@v2
         with:
           path: .
 
